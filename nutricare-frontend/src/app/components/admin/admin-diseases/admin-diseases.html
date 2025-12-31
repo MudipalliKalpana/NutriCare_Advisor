@@ -1,0 +1,46 @@
+<h2>Admin – Manage Diseases</h2>
+
+<!-- FORM -->
+<form (ngSubmit)="saveDisease()">
+  <input
+    name="diseaseName"
+    [(ngModel)]="diseaseName"
+    placeholder="Disease Name"
+    required
+  />
+
+  <textarea
+    name="description"
+    [(ngModel)]="description"
+    placeholder="Description"
+    required
+  ></textarea>
+
+  <button type="submit">
+    {{ diseaseId ? 'Update' : 'Add' }} Disease
+  </button>
+
+  <button type="button" (click)="resetForm()">Clear</button>
+</form>
+
+<hr />
+
+<!-- LIST -->
+<table border="1" width="100%">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+
+  <tr *ngFor="let d of diseases">
+    <td>{{ d.diseaseId }}</td>
+    <td>{{ d.diseaseName }}</td>
+    <td>{{ d.description }}</td>
+    <td>
+      <button (click)="editDisease(d)">Edit</button>
+      <button (click)="deleteDisease(d.diseaseId)">Delete</button>
+    </td>
+  </tr>
+</table>

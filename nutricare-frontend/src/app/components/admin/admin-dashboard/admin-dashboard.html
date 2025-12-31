@@ -1,0 +1,17 @@
+<nav class="admin-navbar">
+  <div class="nav-left">
+    <span class="logo" (click)="goHome()">NutriCare Advisor</span>
+  </div>
+
+  <div class="nav-center">
+    <a routerLink="/admin/foods" routerLinkActive="active">Manage Foods</a>
+    <a routerLink="/admin/diseases" routerLinkActive="active">Manage Diseases</a>
+    <a routerLink="/admin/rules" routerLinkActive="active">Manage Rules</a>
+  </div>
+
+  <div class="nav-right">
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

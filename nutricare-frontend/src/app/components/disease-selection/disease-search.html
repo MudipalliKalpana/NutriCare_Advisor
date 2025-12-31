@@ -1,0 +1,22 @@
+<h2>Select Diseases</h2>
+
+<div class="disease-list">
+  <div *ngFor="let d of diseases" class="disease-item">
+    <label>
+      <input
+        type="checkbox"
+        (change)="toggleSelection(d.diseaseId)"
+      />
+      <strong>{{ d.diseaseName }}</strong>
+      <div class="desc">{{ d.description }}</div>
+    </label>
+  </div>
+</div>
+
+<button
+  class="primary-btn"
+  (click)="getRecommendations()"
+  [disabled]="selectedDiseaseIds.length === 0"
+>
+  Get Recommendations
+</button>

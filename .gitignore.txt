@@ -1,0 +1,16 @@
+# Node / Frontend
+node_modules/
+dist/
+build/
+
+# Java / Spring Boot
+target/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store

@@ -1,0 +1,64 @@
+<h2>Manage Foods</h2>
+
+<div class="food-form">
+  <input
+    type="text"
+    placeholder="Food name"
+    [(ngModel)]="foodName"
+  />
+
+  <input
+    type="text"
+    placeholder="Category (e.g. Fruit, Dairy)"
+    [(ngModel)]="category"
+  />
+
+  <input
+  type="text"
+  placeholder="Portion size (e.g. 1 cup, 100g)"
+  [(ngModel)]="portionSize"
+/>
+
+  <button
+  *ngIf="!editingFoodId"
+  (click)="addFood()"
+  [disabled]="!foodName || !category || !portionSize">
+  Add Food
+</button>
+
+  <button *ngIf="editingFoodId" (click)="saveEdit()">
+    Save Changes
+  </button>
+</div>
+
+<hr />
+
+<table class="food-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let food of foods">
+      <td>{{ food.foodName }}</td>
+      <td>{{ food.category }}</td>
+      <td>
+        <span [class.active]="food.isActive">
+          {{ food.isActive ? 'Active' : 'Inactive' }}
+        </span>
+      </td>
+      <td>
+        <button (click)="editFood(food)">Edit</button>
+        <button (click)="toggleActive(food)">
+  {{ food.isActive ? 'Deactivate' : 'Activate' }}
+</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>

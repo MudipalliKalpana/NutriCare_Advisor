@@ -1,0 +1,14 @@
+<!-- NAVBAR -->
+<nav class="navbar">
+  <span class="brand">NutriCare Advisor</span>
+
+  <div class="nav-actions">
+    <a routerLink="/recommend">Recommend</a>
+    <button (click)="logout()">Logout</button>
+  </div>
+</nav>
+
+<!-- PAGE CONTENT -->
+<div class="page">
+  <router-outlet></router-outlet>
+</div>

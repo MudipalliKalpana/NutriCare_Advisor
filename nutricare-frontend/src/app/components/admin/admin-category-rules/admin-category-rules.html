@@ -1,0 +1,30 @@
+<h3>Category–Disease Rules</h3>
+
+<input placeholder="Food Category"
+       [(ngModel)]="category" />
+
+<select [(ngModel)]="diseaseId">
+  <option *ngFor="let d of diseases"
+          [value]="d.diseaseId">
+    {{ d.diseaseName }}
+  </option>
+</select>
+
+<select [(ngModel)]="impact">
+  <option>LIMIT</option>
+  <option>AVOID</option>
+</select>
+
+<input placeholder="Explanation"
+       [(ngModel)]="explanation" />
+
+<button (click)="add()">Add Rule</button>
+
+<hr>
+
+<ul>
+  <li *ngFor="let r of rules">
+    {{ r.foodCategory }} → {{ r.disease.diseaseName }} ({{ r.impact }})
+    <button (click)="delete(r.id)">❌</button>
+  </li>
+</ul>

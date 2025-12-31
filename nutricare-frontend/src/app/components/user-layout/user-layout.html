@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <span class="brand" (click)="goHome()">NutriCare Advisor</span>
+
+  <div>
+    <a routerLink="/recommend">Recommend</a>
+    <button (click)="logout()">Logout</button>
+  </div>
+</nav>
+
+<div class="page">
+  <router-outlet></router-outlet>
+</div>

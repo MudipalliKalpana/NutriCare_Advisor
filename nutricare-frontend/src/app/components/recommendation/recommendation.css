@@ -1,0 +1,95 @@
+.badge {
+  background: #f39c12;
+  color: white;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.auto-badge {
+  background: #e74c3c;
+  color: white;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.explain {
+  margin-left: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+.empty {
+  padding: 10px;
+  color: gray;
+}
+
+.cards {
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.card.limit {
+  border-left: 5px solid #f39c12;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.food {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: white;
+}
+
+.allowed { background: #27ae60; }
+.limit   { background: #f39c12; }
+.avoid   { background: #e74c3c; }
+.safe    { background: #3498db; }
+
+.auto-badge {
+  background: #c0392b;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+  color: white;
+}
+
+.explanation {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #444;
+}
+
+.empty {
+  color: gray;
+  margin: 10px 0;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: #2C7BE5;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}

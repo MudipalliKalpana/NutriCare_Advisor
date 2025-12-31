@@ -1,0 +1,83 @@
+<h2>Food-Disease Rules</h2>
+
+<!-- RULE FORM -->
+<div class="rule-form">
+  <h3 *ngIf="!editingRuleId">Add Rule</h3>
+  <h3 *ngIf="editingRuleId">Edit Rule</h3>
+
+  <select [(ngModel)]="foodId">
+    <option value="">Select Food</option>
+    <option *ngFor="let f of foods" [value]="f.foodId">
+      {{ f.foodName }}
+    </option>
+  </select>
+
+  <select [(ngModel)]="diseaseId">
+    <option value="">Select Disease</option>
+    <option *ngFor="let d of diseases" [value]="d.diseaseId">
+      {{ d.diseaseName }}
+    </option>
+  </select>
+
+  <select [(ngModel)]="impact">
+    <option>ALLOWED</option>
+    <option>LIMIT</option>
+    <option>AVOID</option>
+  </select>
+
+  <input
+    type="text"
+    placeholder="Explanation"
+    [(ngModel)]="explanation"
+  />
+
+  <button
+    *ngIf="!editingRuleId"
+    (click)="addRule()"
+    [disabled]="!foodId || !diseaseId || !explanation">
+    Add Rule
+  </button>
+
+  <button *ngIf="editingRuleId" (click)="saveEdit()">
+    Save Changes
+  </button>
+
+  <button *ngIf="editingRuleId" class="cancel" (click)="cancelEdit()">
+    Cancel
+  </button>
+</div>
+
+<hr />
+
+<!-- RULES TABLE -->
+<table class="rules-table">
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Disease</th>
+      <th>Impact</th>
+      <th>Explanation</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let rule of rules">
+      <td>{{ rule.food.foodName }}</td>
+      <td>{{ rule.disease.diseaseName }}</td>
+      <td>
+        <span class="badge" [class.limit]="rule.impact === 'LIMIT'"
+                              [class.avoid]="rule.impact === 'AVOID'">
+          {{ rule.impact }}
+        </span>
+      </td>
+      <td>{{ rule.explanation }}</td>
+      <td>
+        <button (click)="editRule(rule)">Edit</button>
+        <button class="danger" (click)="deleteRule(rule.ruleId)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

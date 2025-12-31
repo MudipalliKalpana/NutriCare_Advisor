@@ -1,0 +1,117 @@
+/* Global reset */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --primary: #2C7BE5;      /* Trust blue */
+  --secondary: #E3F2FD;
+  --success: #2ECC71;      /* ALLOWED */
+  --warning: #F1C40F;      /* LIMIT */
+  --danger: #E74C3C;       /* AVOID */
+  --background: #F8F9FA;
+  --card: #FFFFFF;
+}
+
+button.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.allowed { background: var(--success); }
+.limit   { background: var(--warning); }
+.avoid   { background: var(--danger); }
+
+body {
+  margin: 0;
+  background-color: hsl(210, 22%, 96%);
+}
+
+/* Center container */
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #135ba1;
+}
+
+/* Links */
+a {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Messages */
+.error {
+  color: red;
+  text-align: center;
+}
+
+.success {
+  color: green;
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background-color: #1976d2;
+  color: white;
+}
+
+.navbar a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.navbar button {
+  background: white;
+  color: #1976d2;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.page {
+  padding: 20px;
+}
