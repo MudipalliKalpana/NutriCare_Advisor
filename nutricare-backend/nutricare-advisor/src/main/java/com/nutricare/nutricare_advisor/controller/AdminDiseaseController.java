@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,10 +46,11 @@ public class AdminDiseaseController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public String delete(@PathVariable Long id) {
-		adminDiseaseService.deleteDisease(id);
-		return "Disease deleted!";
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+	    adminDiseaseService.deleteDisease(id);
+	    return ResponseEntity.noContent().build(); // ✅ 204 No Content
 	}
+
 	
 	@GetMapping("/search")
 	public Page<Disease> searchDiseases(

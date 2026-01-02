@@ -1,0 +1,66 @@
+/* ======================================================
+   ADMIN HOME PAGE
+   ====================================================== */
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 36px 40px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Title */
+.container h2 {
+  font-size: 29px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+/* Paragraphs */
+.container p {
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+/* Highlight text */
+.container strong {
+  color: var(--primary-green);
+  font-weight: 600;
+}
+
+/* List */
+.container ul {
+  margin: 16px 0 20px;
+  padding-left: 20px;
+}
+
+.container li {
+  font-size: 17px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/* Add subtle bullet styling */
+.container li::marker {
+  color: var(--primary-green);
+}
+
+/* ======================================================
+   OPTIONAL INFO BOX (SAFE NOTICE)
+   ====================================================== */
+
+.admin-info {
+  margin-top: 74px;
+  padding: 14px 18px;
+  border-left: 4px solid var(--primary-green);
+  background: #f0fdf4;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #14532d;
+}

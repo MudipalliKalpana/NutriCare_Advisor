@@ -16,7 +16,7 @@
 }
 
 .brand {
-  font-size: 18px;
+  font-size: 28px;
   font-weight: 600;
   color: var(--text-light);
   cursor: pointer;
@@ -47,3 +47,6 @@
   background: var(--page-bg);
   padding: 2px 20px;
 }
+
+
+

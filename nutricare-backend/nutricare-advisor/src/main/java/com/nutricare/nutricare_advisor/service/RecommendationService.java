@@ -195,6 +195,8 @@ public class RecommendationService {
     	            	                String.join(", ", nutrition.getWarningStrings());
     	            	    }
     	            	}
+    	            	// 🔍 TEMP DEBUG LOG
+    	            	log.info("Final explanation for {} : {}", foodName, explanation);
 
     	            	explanationMap
     	            	    .computeIfAbsent(foodName, k -> new LinkedHashSet<>())

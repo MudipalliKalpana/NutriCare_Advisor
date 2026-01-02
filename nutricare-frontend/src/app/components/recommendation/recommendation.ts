@@ -46,28 +46,51 @@ export class RecommendationComponent implements OnInit {
       });
   }
 
-  formatExplanation(text: string): string {
-  if (!text) return '';
+  formatExplanation(text: string): string[] {
+  if (!text) return [];
 
-  return text
+  const lines = text
     .split(';')
-    .map(line => `• ${line.trim()}`)
-    .join('<br>');
+    .map(line => line.trim())
+    .filter(line => line.length > 0);
+
+  return Array.from(
+    new Set(
+      lines.filter(line =>
+        !line.toLowerCase().startsWith('benefits') &&
+        !line.toLowerCase().startsWith('warnings')
+      )
+    )
+  );
 }
 
 
 extractBenefits(text: string): string[] {
-  const match = text?.match(/Benefits:(.*?)(Warnings:|$)/);
-  return match
-    ? match[1].split(',').map(b => b.trim())
-    : [];
+  if (!text) return [];
+
+  return Array.from(
+    new Set(
+      text
+        .split(';')
+        .map(line => line.trim())
+        .filter(line => line.toLowerCase().startsWith('benefits'))
+        .map(b => b.replace(/^Benefits:/i, '').trim())
+    )
+  );
 }
 
 extractWarnings(text: string): string[] {
-  const match = text?.match(/Warnings:(.*)$/);
-  return match
-    ? match[1].split(',').map(w => w.trim())
-    : [];
+  if (!text) return [];
+
+  return Array.from(
+    new Set(
+      text
+        .split(';')
+        .map(line => line.trim())
+        .filter(line => line.toLowerCase().startsWith('warnings'))
+        .map(w => w.replace(/^Warnings:/i, '').trim())
+    )
+  );
 }
   
   goBack(){

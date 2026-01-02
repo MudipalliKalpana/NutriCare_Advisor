@@ -1,18 +1,27 @@
+<div class="admin-layout">
 <nav class="admin-navbar">
   <div class="logo" routerLink="/admin/home">
-  NutriCare Admin
-</div>
+    NutriCare <span>Advisor</span>
+  </div>
 
   <div class="links">
     <a routerLink="/admin/home">Home</a>
     <a routerLink="/admin/diseases">Diseases</a>
+    <a routerLink="/admin/foods" routerLinkActive="active">Foods</a>
     <a routerLink="/admin/rules">Rules</a>
     <a routerLink="/admin/category-rules">Category Rules</a>
+    <a routerLink="/admin/audit-logs">Audit Logs</a>
   </div>
 
   <button class="logout" (click)="logout()">Logout</button>
 </nav>
 
-<div class="content">
-  <router-outlet></router-outlet>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- FOOTER (reused from styles.css) -->
+  <footer class="footer">
+    © {{ currentYear }} NutriCare Advisor. All rights reserved.
+  </footer>
 </div>

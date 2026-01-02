@@ -1,51 +1,187 @@
+/* ======================================================
+   PAGE TITLE
+   ====================================================== */
+
 .page-title {
+  font-size: 22px;
+  font-weight: 600;
   margin-bottom: 16px;
+  color: var(--text-primary);
 }
 
-.toolbar {
+/* ======================================================
+   FORM CARD
+   ====================================================== */
+
+.card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-soft);
+}
+
+.card h3 {
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+/* ======================================================
+   FORM GRID
+   ====================================================== */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.form-group {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
+  flex-direction: column;
 }
 
-.toolbar input {
-  width: 250px;
-  padding: 6px;
+.form-group.full {
+  grid-column: span 3;
 }
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+}
+
+select,
+textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ======================================================
+   FORM ACTIONS
+   ====================================================== */
+
+.form-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+}
+
+button.primary {
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.primary:hover {
+  background: var(--primary-green-dark);
+}
+
+button.secondary {
+  background: #e5e7eb;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ======================================================
+   TABLE
+   ====================================================== */
 
 .admin-table {
   width: 100%;
   border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.admin-table thead {
+  background: #f1f5f9;
 }
 
 .admin-table th,
 .admin-table td {
-  border: 1px solid #e5e7eb;
-  padding: 8px;
+  padding: 14px;
+  font-size: 14px;
+  text-align: left;
 }
 
 .admin-table th {
-  background: #f1f5f9;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.admin-table tr {
+  border-top: 1px solid #e5e7eb;
+}
+
+.admin-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* ======================================================
+   IMPACT BADGES
+   ====================================================== */
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.allowed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge.limit {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge.avoid {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ======================================================
+   ACTION BUTTONS
+   ====================================================== */
+
+.actions {
+  display: flex;
+  gap: 8px;
 }
 
 .actions button {
-  margin-right: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
 }
 
-.danger {
-  background: #ef4444;
+.actions button:hover {
+  opacity: 0.9;
+}
+
+.actions .danger {
+  background: #dc2626;
   color: white;
-}
-
-.active {
-  color: green;
-  font-weight: bold;
-}
-
-.inactive {
-  color: gray;
-}
-
-.pagination {
-  margin-top: 12px;
 }

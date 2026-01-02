@@ -1,10 +1,12 @@
 .page-title {
   color: var(--primary);
+  margin-top: 45px;
 }
 
 .page-subtitle {
   text-align: center;
   font-weight: 1000;
+  font-size: 18px;
 }
 
 .skeleton {
@@ -23,7 +25,7 @@
 .search-bar {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1.5rem;
   margin: 1rem 0;
 }
 
@@ -32,10 +34,12 @@
   padding: 0.6rem;
   border-radius: 6px;
   border: 1px solid #0d2c52;
+  font-size: 18px;
 }
 
 .search-bar button {
   padding: 0.6rem 1rem;
+  font-size: 18px;
   border-radius: 6px;
   background-color: #2bd56c;
 }
@@ -53,13 +57,17 @@
 }
 
 .disease-card {
-  background: var(--bg-card);
+  /* background: var(--bg-card); */
+  background: #a4f9c5;
   border-radius: 14px;
-  padding: 1rem 1.1rem;
+  padding: 3rem 1.1rem;
   cursor: pointer;
   border-left: 5px solid transparent;
   transition: all 0.25s ease;
   box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 40px;
 }
 
 .disease-card.selected {
@@ -83,14 +91,16 @@
 .disease-card p {
   margin-top: 0.4rem;
   font-size: 0.9rem;
-  color: var(--text-muted);
+  /* color: var(--text-muted); */
+  color: rgb(29, 54, 34);
 }
 
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 1.8rem;
   margin: 2rem 0;
+  margin-top: 30px;
 }
 
 .pagination button {
@@ -107,7 +117,8 @@
 
 .pagination button:hover {
   background: var(--secondary);
-  color: rgb(50, 37, 190);
+  color: rgb(0, 48, 95);
+  border:1px solid rgb(0, 48, 95);
 }
 
 .pagination button:disabled {
@@ -118,6 +129,7 @@
 .pagination span {
   font-weight: 600;
   color: var(--primary);
+  margin-top: 5px;
 }
 
 
@@ -127,7 +139,7 @@
   margin: 1.5rem auto;
   padding: 0.8rem 1.6rem;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #fff;
   background: rgb(0, 48, 95);

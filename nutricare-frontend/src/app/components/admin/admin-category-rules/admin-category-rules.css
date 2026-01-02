@@ -1,0 +1,216 @@
+/* ======================================================
+   PAGE LAYOUT
+   ====================================================== */
+
+.category-rules-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ======================================================
+   TITLES & SUBTITLES
+   ====================================================== */
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+}
+
+/* ======================================================
+   CARD BASE
+   ====================================================== */
+
+.card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-soft);
+}
+
+.card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+/* ======================================================
+   FORM GRID
+   ====================================================== */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  grid-column: span 3;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.15);
+}
+
+/* ======================================================
+   PRIMARY BUTTON
+   ====================================================== */
+
+.primary-btn {
+  margin-top: 18px;
+  background: var(--primary-green);
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: var(--primary-green-dark);
+}
+
+/* ======================================================
+   TABLE
+   ====================================================== */
+
+.rules-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.rules-table thead {
+  background: #f1f5f9;
+}
+
+.rules-table th,
+.rules-table td {
+  padding: 14px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.rules-table th {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.rules-table tr {
+  border-top: 1px solid #e5e7eb;
+}
+
+.rules-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* ======================================================
+   IMPACT BADGES
+   ====================================================== */
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge.limit {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge.avoid {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ======================================================
+   DELETE BUTTON
+   ====================================================== */
+
+.delete-btn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* ======================================================
+   EMPTY STATE
+   ====================================================== */
+
+.empty {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  padding: 18px;
+}
+
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-group.full {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full {
+    grid-column: span 1;
+  }
+}

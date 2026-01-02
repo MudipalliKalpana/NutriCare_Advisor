@@ -13,6 +13,7 @@ import { DiseaseSearchComponent } from './components/disease-search/disease-sear
 import { AdminFoodsComponent } from './components/admin/admin-foods/admin-foods';
 import { AdminAuditLogsComponent } from './components/admin/admin-audit-logs/admin-audit-logs';
 import { AuthComponent } from './components/auth/auth';
+import { AdminLayoutComponent } from './components/layout/admin-layout/admin-layout';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -33,7 +34,7 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminDashboardComponent,
+    component: AdminLayoutComponent,
     canActivate: [authGuard, AdminGuard],   // ✅ BOTH GUARDS HERE
     children: [
       { path: '', redirectTo: 'diseases', pathMatch: 'full' }, // default
@@ -41,8 +42,8 @@ export const routes: Routes = [
       { path: 'diseases', component: AdminDiseasesComponent },
       { path: 'rules', component: AdminRulesComponent },
       { path: 'foods', component: AdminFoodsComponent },
-      { path: 'audit-logs', component: AdminAuditLogsComponent }
-      // { path: 'category-rules', component: AdminCategoryRulesComponent }
+      { path: 'audit-logs', component: AdminAuditLogsComponent },
+      { path: 'category-rules', component: AdminCategoryRulesComponent }
     ]
   },
   

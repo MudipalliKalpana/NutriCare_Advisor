@@ -1,5 +1,5 @@
 <nav class="navbar">
-  <span class="brand" (click)="goHome()">NutriCare Advisor application </span>
+  <span class="brand" (click)="goHome()">NutriCare Advisor </span>
 
   <div>
     <button (click)="logout()">Logout</button>
@@ -9,3 +9,8 @@
 <div class="page">
   <router-outlet></router-outlet>
 </div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © {{ currentYear }} NutriCare Advisor. All rights reserved.
+</footer>

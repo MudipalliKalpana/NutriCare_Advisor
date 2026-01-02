@@ -20,31 +20,31 @@ export class DiseaseSearchComponent implements OnInit {
   keyword: string = '';   // ✅ REQUIRED
 
   page = 0;
-  size = 6;
+  size = 5;
   totalPages = 0;
 
   constructor(
     private diseaseService: DiseaseService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadDiseases();
   }
 
   loadDiseases(reset: boolean = false) {
-  if (reset) {
-    this.page = 0;
-  }
+    if (reset) {
+      this.page = 0;
+    }
 
-  this.diseaseService
-    .searchDiseases(this.keyword, this.page, this.size)
-    .subscribe(res => {
-      this.diseases = res.content;
-      this.totalPages = res.totalPages;
-    });
-}
+    this.diseaseService
+      .searchDiseases(this.keyword, this.page, this.size)
+      .subscribe(res => {
+        this.diseases = res.content;
+        this.totalPages = res.totalPages;
+      });
+  }
 
   nextPage() {
     if (this.page < this.totalPages - 1) {
@@ -72,7 +72,10 @@ export class DiseaseSearchComponent implements OnInit {
   getRecommendations() {
     this.router.navigate(['/user/recommend'], {
       state: {
-        diseaseIds: this.selectedDiseaseIds
+        diseaseIds: this.selectedDiseaseIds,
+        diseases: this.diseases.filter(d =>
+          this.selectedDiseaseIds.includes(d.diseaseId)
+        )
       }
     });
   }

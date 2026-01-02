@@ -7,7 +7,8 @@ import { AdminDiseaseService } from '../../../services/admin-disease.service';
   selector: 'app-admin-diseases',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './admin-diseases.html'
+  templateUrl: './admin-diseases.html',
+  styleUrl: './admin-diseases.css'
 })
 export class AdminDiseasesComponent implements OnInit {
 
@@ -17,42 +18,53 @@ export class AdminDiseasesComponent implements OnInit {
   diseaseId?: number;
   diseaseName = '';
   description = '';
+  isActive = true;
 
-  constructor(private diseaseService: AdminDiseaseService) {}
+  // search & pagination
+  keyword = '';
+  page = 0;
+  size = 5;
+  totalPages = 0;
+
+  constructor(private diseaseService: AdminDiseaseService) { }
 
   ngOnInit() {
     this.loadDiseases();
   }
 
-  keyword = '';
-page = 0;
-size = 5;
+  loadDiseases() {
+    this.diseaseService
+      .searchDiseases(this.keyword, this.page, this.size)
+      .subscribe(res => {
+        this.diseases = res.content;
+        this.totalPages = res.totalPages;
+      });
+  }
 
-loadDiseases() {
-  this.diseaseService
-    .searchDiseases(this.keyword, this.page, this.size)
-    .subscribe(res => {
-      this.diseases = res.content;
-    });
-}
-
-next() {
-  this.page++;
-  this.loadDiseases();
-}
-
-prev() {
-  if (this.page > 0) {
-    this.page--;
+  onSearch() {
+    this.page = 0;
     this.loadDiseases();
   }
-}
 
+  next() {
+    if (this.page < this.totalPages - 1) {
+      this.page++;
+      this.loadDiseases();
+    }
+  }
+
+  prev() {
+    if (this.page > 0) {
+      this.page--;
+      this.loadDiseases();
+    }
+  }
 
   saveDisease() {
     const payload = {
       diseaseName: this.diseaseName,
-      description: this.description
+      description: this.description,
+      isActive: this.isActive
     };
 
     if (this.diseaseId) {
@@ -74,18 +86,22 @@ prev() {
     this.diseaseId = d.diseaseId;
     this.diseaseName = d.diseaseName;
     this.description = d.description;
+    this.isActive = d.isActive;
   }
 
   deleteDisease(id: number) {
     if (confirm('Delete this disease?')) {
-      this.diseaseService.delete(id)
-        .subscribe(() => this.loadDiseases());
+      this.diseaseService.delete(id).subscribe(() => {
+        this.diseases = this.diseases.filter(d => d.diseaseId !== id);
+      });
     }
   }
+
 
   resetForm() {
     this.diseaseId = undefined;
     this.diseaseName = '';
     this.description = '';
+    this.isActive = true;
   }
 }

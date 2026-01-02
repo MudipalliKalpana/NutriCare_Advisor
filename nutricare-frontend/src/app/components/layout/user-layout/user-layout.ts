@@ -12,6 +12,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class UserLayoutComponent {
 
+  currentYear = new Date().getFullYear();
   constructor(
     private authService: AuthService,
     private router: Router

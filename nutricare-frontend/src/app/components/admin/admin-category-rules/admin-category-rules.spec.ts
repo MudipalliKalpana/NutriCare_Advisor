@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminCategoryRules } from './admin-category-rules';
+import { AdminCategoryRulesComponent } from './admin-category-rules';
 
 describe('AdminCategoryRules', () => {
-  let component: AdminCategoryRules;
-  let fixture: ComponentFixture<AdminCategoryRules>;
+  let component: AdminCategoryRulesComponent;
+  let fixture: ComponentFixture<AdminCategoryRulesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminCategoryRules]
+      imports: [AdminCategoryRulesComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AdminCategoryRules);
+    fixture = TestBed.createComponent(AdminCategoryRulesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,10 +1,14 @@
 <h2 class="user-title">Food Recommendations</h2>
 
-<!-- Selected Diseases -->
-<div class="selected-diseases">
-  <span *ngFor="let d of selectedDiseases">
-    {{ d.diseaseName }}
-  </span>
+<!-- Selected Diseases Section -->
+<div class="selected-section" *ngIf="selectedDiseases.length > 0">
+  <h4 class="section-title">Selected Health Conditions</h4>
+
+  <div class="selected-diseases">
+    <span class="disease-chip" *ngFor="let d of selectedDiseases">
+      {{ d.diseaseName }}
+    </span>
+  </div>
 </div>
 
 <!-- Empty State -->
@@ -27,11 +31,38 @@
       </span>
     </div>
 
-    <p
-  class="explanation"
-  [innerHTML]="formatExplanation(r.explanation)"
-></p>
+   <!-- Normal Explanation -->
+<ul class="explanation">
+  <li *ngFor="let line of formatExplanation(r.explanation)">
+    {{ line }}
+  </li>
+</ul>
 
+<!-- Benefits -->
+<div
+  class="benefits-box"
+  *ngIf="extractBenefits(r.explanation).length > 0"
+>
+  <strong>Benefits</strong>
+  <ul>
+    <li *ngFor="let b of extractBenefits(r.explanation)">
+      {{ b }}
+    </li>
+  </ul>
+</div>
+
+<!-- Warnings -->
+<div
+  class="warnings-box"
+  *ngIf="extractWarnings(r.explanation).length > 0"
+>
+  <strong>Warnings</strong>
+  <ul>
+    <li *ngFor="let w of extractWarnings(r.explanation)">
+      {{ w }}
+    </li>
+  </ul>
+</div>
 
     <div *ngIf="r.autoLimited" class="auto-warning">
       ⚠ Auto-limited due to food category risk

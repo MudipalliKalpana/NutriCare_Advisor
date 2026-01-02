@@ -1,51 +1,348 @@
+/* ======================================================
+   ADMIN – MANAGE DISEASES
+   ====================================================== */
+
 .page-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: var(--text-primary);
+}
+
+/* ======================================================
+   CARD (FORM)
+   ====================================================== */
+
+.card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+}
+
+.card h3 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+/* ======================================================
+   FORM
+   ====================================================== */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 15px;
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-green);
+}
+
+/* Toggle row container */
+.toggle-row {
+  display: inline-flex;       /* 🔑 prevents grid stretch */
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+/* Switch base */
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  display: inline-block;
+}
+
+/* Hide checkbox */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider */
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: #cbd5e1;
+  border-radius: 999px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+/* Knob */
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+/* Checked state */
+.toggle-switch input:checked + .slider {
+  background-color: #16a34a; /* green */
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+/* Label */
+.toggle-label {
+  font-size: 17px;
+  font-weight: 500;
+  color: #334155;
+}
+
+/* ======================================================
+   FORM ACTIONS
+   ====================================================== */
+
+.form-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+}
+
+.form-actions button {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.form-actions .primary {
+  background: var(--primary-green);
+  color: #ffffff;
+}
+
+.form-actions .primary:hover {
+  background: var(--primary-green-dark);
+}
+
+.form-actions .secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.form-actions .secondary:hover {
+  background: #d1d5db;
+}
+
+/* ======================================================
+   TOOLBAR (SEARCH)
+   ====================================================== */
+
+.toolbar {
   margin-bottom: 16px;
 }
 
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
+.toolbar input {
+  width: 360px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 15px;
 }
 
-.toolbar input {
-  width: 250px;
-  padding: 6px;
+.toolbar input:focus {
+  outline: none;
+  border-color: var(--primary-green);
 }
+
+/* ======================================================
+   TABLE
+   ====================================================== */
 
 .admin-table {
   width: 100%;
   border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
 }
 
-.admin-table th,
-.admin-table td {
-  border: 1px solid #e5e7eb;
-  padding: 8px;
-}
-
-.admin-table th {
+.admin-table thead {
   background: #f1f5f9;
 }
 
-.actions button {
-  margin-right: 6px;
+.admin-table th {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
-.danger {
-  background: #ef4444;
-  color: white;
+.admin-table td {
+  padding: 14px;
+  font-size: 17px;
+  color: var(--text-primary);
+  border-top: 1px solid #e5e7eb;
 }
+
+.admin-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* ======================================================
+   STATUS BADGES
+   ====================================================== */
 
 .active {
-  color: green;
-  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #166534;
 }
 
 .inactive {
-  color: gray;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  background: #fee2e2;
+  color: #991b1b;
 }
 
+/* ======================================================
+   ACTION BUTTONS
+   ====================================================== */
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  padding: 6px 12px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: var(--primary-dark);
+  color: #ffffff;
+}
+
+.actions button:hover {
+  background: var(--primary-green);
+}
+
+.actions button.danger {
+  background: #dc2626;
+}
+
+.actions button.danger:hover {
+  background: #b91c1c;
+}
+
+/* ======================================================
+   EMPTY STATE
+   ====================================================== */
+
+.empty {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* ======================================================
+   PAGINATION
+   ====================================================== */
 .pagination {
-  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+  margin: 2rem 0;
+  margin-top: 30px;
+}
+
+.pagination button {
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  background: #049a06;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.pagination button:hover {
+  background: var(--secondary);
+  color: rgb(0, 48, 95);
+  border:1px solid rgb(0, 48, 95);
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 5px;
+}
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.checkbox {
+    grid-column: span 1;
+  }
+
+  .toolbar input {
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
 }

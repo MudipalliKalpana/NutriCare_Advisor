@@ -1,15 +1,49 @@
 <h2 class="page-title">Manage Diseases</h2>
 
-<div class="toolbar">
-  <input
-    type="text"
-    placeholder="Search disease..."
-    [(ngModel)]="keyword"
-    (input)="loadDiseases()"
-  />
+<!-- ADD / EDIT FORM -->
+<div class="card form-card">
+  <h3>{{ diseaseId ? 'Edit Disease' : 'Add Disease' }}</h3>
 
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Disease Name</label>
+      <input type="text" placeholder="Enter disease name" [(ngModel)]="diseaseName" />
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea rows="3" placeholder="Short description" [(ngModel)]="description">
+      </textarea>
+    </div>
+  </div>
+
+  <div class="toggle-row">
+  <label class="toggle-switch">
+    <input type="checkbox" [(ngModel)]="isActive" />
+    <span class="slider"></span>
+  </label>
+  <span class="toggle-label">Active</span>
 </div>
 
+
+
+  <div class="form-actions">
+    <button class="primary" (click)="saveDisease()" [disabled]="!diseaseName || !description">
+      {{ diseaseId ? 'Update Disease' : 'Add Disease' }}
+    </button>
+
+    <button *ngIf="diseaseId" class="secondary" (click)="resetForm()">
+      Cancel
+    </button>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="toolbar">
+  <input type="text" placeholder="Search disease..." [(ngModel)]="keyword" (input)="onSearch()" />
+</div>
+
+<!-- TABLE -->
 <table class="admin-table">
   <thead>
     <tr>
@@ -29,7 +63,6 @@
           {{ d.isActive ? 'Active' : 'Inactive' }}
         </span>
       </td>
-
       <td class="actions">
         <button (click)="editDisease(d)">Edit</button>
         <button class="danger" (click)="deleteDisease(d.diseaseId)">
@@ -37,12 +70,18 @@
         </button>
       </td>
     </tr>
+
+    <tr *ngIf="diseases.length === 0">
+      <td colspan="4" class="empty">No diseases found.</td>
+    </tr>
   </tbody>
 </table>
 
-<!-- Pagination -->
+<!-- PAGINATION -->
 <div class="pagination">
   <button (click)="prev()" [disabled]="page === 0">Prev</button>
-  <span>Page {{ page + 1 }}</span>
-  <button (click)="next()">Next</button>
+  <span>Page {{ page + 1 }} of {{ totalPages }}</span>
+  <button (click)="next()" [disabled]="page >= totalPages - 1">
+    Next
+  </button>
 </div>

@@ -1,51 +1,168 @@
-.page-title {
-  margin-bottom: 16px;
+/* ======================================================
+   PAGE TITLE
+   ====================================================== */
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: var(--text-primary);
 }
 
-.toolbar {
+/* ======================================================
+   FOOD FORM
+   ====================================================== */
+
+.food-form {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+  align-items: center;
 }
 
-.toolbar input {
-  width: 250px;
-  padding: 6px;
+.food-form input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  min-width: 200px;
 }
 
-.admin-table {
-  width: 100%;
-  border-collapse: collapse;
+.food-form input:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.15);
 }
 
-.admin-table th,
-.admin-table td {
-  border: 1px solid #e5e7eb;
-  padding: 8px;
-}
+/* ======================================================
+   BUTTONS
+   ====================================================== */
 
-.admin-table th {
-  background: #f1f5f9;
-}
-
-.actions button {
-  margin-right: 6px;
-}
-
-.danger {
-  background: #ef4444;
+.food-form button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--primary-green);
   color: white;
 }
 
-.active {
-  color: green;
-  font-weight: bold;
+.food-form button:hover {
+  background: var(--primary-green-dark);
 }
 
-.inactive {
-  color: gray;
+.food-form button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
 }
 
-.pagination {
-  margin-top: 12px;
+/* Secondary buttons in table */
+.food-table button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: var(--primary-dark);
+  color: white;
+}
+
+.food-table button:hover {
+  opacity: 0.9;
+}
+
+.food-table button:nth-child(2) {
+  background: #f59e0b; /* amber for activate/deactivate */
+}
+
+/* ======================================================
+   DIVIDER
+   ====================================================== */
+
+hr {
+  margin: 24px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ======================================================
+   FOOD TABLE
+   ====================================================== */
+
+.food-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.food-table thead {
+  background: #f1f5f9;
+}
+
+.food-table th,
+.food-table td {
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.food-table th {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.food-table tr {
+  border-top: 1px solid #e5e7eb;
+}
+
+.food-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* ======================================================
+   STATUS BADGES
+   ====================================================== */
+
+.food-table span {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.food-table span.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.food-table span:not(.active) {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 768px) {
+  .food-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .food-form input {
+    width: 100%;
+  }
+
+  .food-table th,
+  .food-table td {
+    padding: 10px;
+  }
 }

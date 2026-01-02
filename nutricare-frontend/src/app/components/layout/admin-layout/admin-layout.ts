@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.html',
   styleUrl: './admin-layout.css',
-  imports: [RouterOutlet]
+  imports: [RouterModule]
 })
 export class AdminLayoutComponent {
 
+  currentYear = new Date().getFullYear();
   constructor(private router: Router) {}
 
   logout() {

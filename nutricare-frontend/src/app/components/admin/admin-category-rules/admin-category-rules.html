@@ -1,30 +1,88 @@
-<h3>Category–Disease Rules</h3>
+<div class="category-rules-container">
 
-<input placeholder="Food Category"
-       [(ngModel)]="category" />
+  <h2 class="page-title">Category–Disease Rules</h2>
+  <p class="page-subtitle">
+    Category rules act as safety overrides when food-level rules are insufficient.
+  </p>
 
-<select [(ngModel)]="diseaseId">
-  <option *ngFor="let d of diseases"
-          [value]="d.diseaseId">
-    {{ d.diseaseName }}
-  </option>
-</select>
+  <!-- ADD RULE CARD -->
+  <div class="card form-card">
+    <h3>Add Category Rule</h3>
 
-<select [(ngModel)]="impact">
-  <option>LIMIT</option>
-  <option>AVOID</option>
-</select>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Food Category</label>
+        <input
+          type="text"
+          placeholder="e.g. High Sodium, Sugary"
+          [(ngModel)]="category"
+        />
+      </div>
 
-<input placeholder="Explanation"
-       [(ngModel)]="explanation" />
+      <div class="form-group">
+        <label>Disease</label>
+        <select [(ngModel)]="diseaseId">
+          <option value="" disabled selected>Select disease</option>
+          <option *ngFor="let d of diseases" [value]="d.diseaseId">
+            {{ d.diseaseName }}
+          </option>
+        </select>
+      </div>
 
-<button (click)="add()">Add Rule</button>
+      <div class="form-group">
+        <label>Impact</label>
+        <select [(ngModel)]="impact">
+          <option value="LIMIT">LIMIT</option>
+          <option value="AVOID">AVOID</option>
+        </select>
+      </div>
 
-<hr>
+      <div class="form-group full">
+        <label>Explanation</label>
+        <input
+          type="text"
+          placeholder="Why this category is risky"
+          [(ngModel)]="explanation"
+        />
+      </div>
+    </div>
 
-<ul>
-  <li *ngFor="let r of rules">
-    {{ r.foodCategory }} → {{ r.disease.diseaseName }} ({{ r.impact }})
-    <button (click)="delete(r.id)">❌</button>
-  </li>
-</ul>
+    <button class="primary-btn" (click)="add()">Add Rule</button>
+  </div>
+
+  <!-- EXISTING RULES -->
+  <div class="card list-card">
+    <h3>Existing Category Rules</h3>
+
+    <table class="rules-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Disease</th>
+          <th>Impact</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let r of rules">
+          <td>{{ r.foodCategory }}</td>
+          <td>{{ r.disease.diseaseName }}</td>
+          <td>
+            <span class="badge" [ngClass]="r.impact.toLowerCase()">
+              {{ r.impact }}
+            </span>
+          </td>
+          <td>
+            <button class="delete-btn" (click)="delete(r.id)">Delete</button>
+          </td>
+        </tr>
+
+        <tr *ngIf="rules.length === 0">
+          <td colspan="4" class="empty">No category rules defined yet.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
