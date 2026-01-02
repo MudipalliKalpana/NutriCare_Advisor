@@ -32,23 +32,6 @@ export class AuthService {
         return !!this.getToken();
     }
 
-    // getRoleFromToken(): string | null {
-    //     const token = this.getToken();
-    //     if (!token) return null;
-
-    //     const payload = JSON.parse(atob(token.split('.')[1]));
-
-    //     // depending on how backend sets role
-    //     if (payload.role) {
-    //         return payload.role;
-    //     }
-
-    //     if (payload.authorities && payload.authorities.length > 0) {
-    //         return payload.authorities[0];
-    //     }
-
-    //     return null;
-    // }
     getRoleFromToken(): string | null {
   const token = this.getToken();
   if (!token) return null;

@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 
 import com.nutricare.nutricare_advisor.dto.RecommendationDTO;
 import com.nutricare.nutricare_advisor.entity.*;
+import com.nutricare.nutricare_advisor.mongo.FoodNutrition;
+import com.nutricare.nutricare_advisor.mongo.FoodNutritionRepository;
 import com.nutricare.nutricare_advisor.repository.*;
 
 @Service
@@ -23,7 +25,8 @@ public class RecommendationService {
     private final FoodDiseaseRuleRepository ruleRepository;
     private final DiseaseRepository diseaseRepository;
     private final CategoryDiseaseRuleRepository categoryRuleRepo;
-
+    private final FoodNutritionRepository nutritionRepo;
+    
     /* =========================
        MAIN ENTRY METHOD
        ========================= */
@@ -168,13 +171,35 @@ public class RecommendationService {
     	            }
 
     	            String explanation =
-    	                finalImpact == Impact.LIMIT
-    	                    ? withDisclaimer(r.getExplanation())
-    	                    : r.getExplanation();
+    	            	    finalImpact == Impact.LIMIT
+    	            	        ? withDisclaimer(r.getExplanation())
+    	            	        : r.getExplanation();
 
-    	            explanationMap
-    	                .computeIfAbsent(foodName, k -> new LinkedHashSet<>())
-    	                .add(explanation);
+    	            	/* =========================
+    	            	   MONGODB NUTRITION MERGE
+    	            	   ========================= */
+    	            	Optional<FoodNutrition> nutritionOpt =
+    	            	        nutritionRepo.findByFoodNameIgnoreCase(foodName);
+
+    	            	if (nutritionOpt.isPresent()) {
+    	            	    FoodNutrition nutrition = nutritionOpt.get();
+
+    	            	    if (nutrition.getBenefits() != null && !nutrition.getBenefits().isEmpty()) {
+    	            	        explanation += "; Benefits: " +
+    	            	                String.join(", ", nutrition.getBenefits());
+    	            	    }
+
+    	            	    if (nutrition.getWarningStrings() != null &&
+    	            	        !nutrition.getWarningStrings().isEmpty()) {
+    	            	        explanation += "; Warnings: " +
+    	            	                String.join(", ", nutrition.getWarningStrings());
+    	            	    }
+    	            	}
+
+    	            	explanationMap
+    	            	    .computeIfAbsent(foodName, k -> new LinkedHashSet<>())
+    	            	    .add(explanation);
+
 
     	            RecommendationDTO existing = finalMap.get(foodName);
 

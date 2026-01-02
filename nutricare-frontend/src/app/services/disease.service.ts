@@ -32,10 +32,18 @@ export class DiseaseService {
     return this.http.get<any[]>(this.baseUrl);
   }
 
-  searchDiseases(keyword='',page=0,size=10){
-        return this.http.get<any>(
-            `${this.baseUrl}/search?keyword=${keyword}&page=${page}&size=${size}`
-        );
+  searchDiseases(keyword: string, page: number, size: number) {
+  return this.http.get<any>(
+    `http://localhost:8080/api/diseases/search`,
+    {
+      params: {
+        keyword,
+        page,
+        size
+      }
     }
+  );
+}
+
 
 }

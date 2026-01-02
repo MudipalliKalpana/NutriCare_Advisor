@@ -28,8 +28,6 @@ public class AuthController {
 	private final PasswordEncoder encoder;
 	private final JwtUtil jwtUtil;
 	
-	
-	
 	@PostMapping("/register")
 	public ResponseEntity<Map<String, String>> register(@RequestBody User user) {
 		user.setPassword(encoder.encode(user.getPassword()));

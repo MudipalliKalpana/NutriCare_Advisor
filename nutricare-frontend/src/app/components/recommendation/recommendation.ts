@@ -45,6 +45,31 @@ export class RecommendationComponent implements OnInit {
         }
       });
   }
+
+  formatExplanation(text: string): string {
+  if (!text) return '';
+
+  return text
+    .split(';')
+    .map(line => `• ${line.trim()}`)
+    .join('<br>');
+}
+
+
+extractBenefits(text: string): string[] {
+  const match = text?.match(/Benefits:(.*?)(Warnings:|$)/);
+  return match
+    ? match[1].split(',').map(b => b.trim())
+    : [];
+}
+
+extractWarnings(text: string): string[] {
+  const match = text?.match(/Warnings:(.*)$/);
+  return match
+    ? match[1].split(',').map(w => w.trim())
+    : [];
+}
+  
   goBack(){
     this.router.navigate(['/user/search-diseases']);
   }

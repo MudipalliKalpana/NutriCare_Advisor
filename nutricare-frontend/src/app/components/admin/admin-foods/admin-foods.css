@@ -1,35 +1,51 @@
-
-.food-form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.page-title {
+  margin-bottom: 16px;
 }
 
-.food-form input {
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.toolbar input {
+  width: 250px;
   padding: 6px;
 }
 
-.food-form button {
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-.food-table {
+.admin-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.food-table th,
-.food-table td {
-  border: 1px solid #ddd;
+.admin-table th,
+.admin-table td {
+  border: 1px solid #e5e7eb;
   padding: 8px;
 }
 
-.food-table th {
-  background-color: #f4f4f4;
+.admin-table th {
+  background: #f1f5f9;
+}
+
+.actions button {
+  margin-right: 6px;
+}
+
+.danger {
+  background: #ef4444;
+  color: white;
 }
 
 .active {
   color: green;
   font-weight: bold;
+}
+
+.inactive {
+  color: gray;
+}
+
+.pagination {
+  margin-top: 12px;
 }

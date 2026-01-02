@@ -23,4 +23,22 @@ export class AdminDiseaseService {
   delete(id: number) {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
+
+  searchDiseases(
+  keyword: string,
+  page: number,
+  size: number
+) {
+  return this.http.get<any>(
+    `${this.baseUrl}/search`,
+    {
+      params: {
+        keyword: keyword || '',
+        page: page,
+        size: size
+      }
+    }
+  );
+}
+
 }

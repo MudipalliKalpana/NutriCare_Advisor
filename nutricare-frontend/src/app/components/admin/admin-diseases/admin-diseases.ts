@@ -24,11 +24,30 @@ export class AdminDiseasesComponent implements OnInit {
     this.loadDiseases();
   }
 
-  loadDiseases() {
-    this.diseaseService.getAll().subscribe(res => {
-      this.diseases = res;
+  keyword = '';
+page = 0;
+size = 5;
+
+loadDiseases() {
+  this.diseaseService
+    .searchDiseases(this.keyword, this.page, this.size)
+    .subscribe(res => {
+      this.diseases = res.content;
     });
+}
+
+next() {
+  this.page++;
+  this.loadDiseases();
+}
+
+prev() {
+  if (this.page > 0) {
+    this.page--;
+    this.loadDiseases();
   }
+}
+
 
   saveDisease() {
     const payload = {

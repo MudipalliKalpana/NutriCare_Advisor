@@ -1,80 +1,30 @@
-<h2>Food-Disease Rules</h2>
+<h3>Existing Rules</h3>
 
-<!-- RULE FORM -->
-<div class="rule-form">
-  <h3 *ngIf="!editingRuleId">Add Rule</h3>
-  <h3 *ngIf="editingRuleId">Edit Rule</h3>
-
-  <select [(ngModel)]="foodId">
-    <option value="">Select Food</option>
-    <option *ngFor="let f of foods" [value]="f.foodId">
-      {{ f.foodName }}
-    </option>
-  </select>
-
-  <select [(ngModel)]="diseaseId">
-    <option value="">Select Disease</option>
-    <option *ngFor="let d of diseases" [value]="d.diseaseId">
-      {{ d.diseaseName }}
-    </option>
-  </select>
-
-  <select [(ngModel)]="impact">
-    <option>ALLOWED</option>
-    <option>LIMIT</option>
-    <option>AVOID</option>
-  </select>
-
-  <input
-    type="text"
-    placeholder="Explanation"
-    [(ngModel)]="explanation"
-  />
-
-  <button
-    *ngIf="!editingRuleId"
-    (click)="addRule()"
-    [disabled]="!foodId || !diseaseId || !explanation">
-    Add Rule
-  </button>
-
-  <button *ngIf="editingRuleId" (click)="saveEdit()">
-    Save Changes
-  </button>
-
-  <button *ngIf="editingRuleId" class="cancel" (click)="cancelEdit()">
-    Cancel
-  </button>
-</div>
-
-<hr />
-
-<!-- RULES TABLE -->
-<table class="rules-table">
+<table class="admin-table">
   <thead>
     <tr>
       <th>Food</th>
       <th>Disease</th>
       <th>Impact</th>
       <th>Explanation</th>
-      <th>Actions</th>
+      <th width="160">Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr *ngFor="let rule of rules">
-      <td>{{ rule.food.foodName }}</td>
-      <td>{{ rule.disease.diseaseName }}</td>
+    <tr *ngFor="let r of rules">
+      <td>{{ r.food.foodName }}</td>
+      <td>{{ r.disease.diseaseName }}</td>
       <td>
-        <span class="badge" [class.limit]="rule.impact === 'LIMIT'"
-                              [class.avoid]="rule.impact === 'AVOID'">
-          {{ rule.impact }}
+        <span class="badge" [class.limit]="r.impact === 'LIMIT'">
+          {{ r.impact }}
         </span>
       </td>
-      <td>{{ rule.explanation }}</td>
-      <td>
-        <button (click)="editRule(rule)">Edit</button>
-        <button class="danger" (click)="deleteRule(rule.ruleId)">
+      <td>{{ r.explanation }}</td>
+
+      <td class="actions">
+        <button (click)="editRule(r)">Edit</button>
+        <button class="danger" (click)="deleteRule(r.ruleId)">
           Delete
         </button>
       </td>

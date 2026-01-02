@@ -1,0 +1,89 @@
+<div class="auth-wrapper">
+    <h1 class="project-title">
+  NutriCare <span>Advisor</span>
+</h1>
+  <div class="auth-card" [class.flipped]="isFlipped">
+    <!-- Front: Login -->
+    <div class="auth-face front">
+      <h2>Login</h2>
+      <form (ngSubmit)="login()" class="form">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input 
+            id="loginEmail"
+            type="email" 
+            [(ngModel)]="loginEmail" 
+            name="loginEmail" 
+            placeholder="Enter your email" 
+            required 
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input 
+            id="loginPassword"
+            type="password" 
+            [(ngModel)]="loginPassword" 
+            name="loginPassword" 
+            placeholder="Enter your password" 
+            required 
+          />
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <p class="switch">
+        New user? <a (click)="flipCard()">Register here</a>
+      </p>
+    </div>
+
+    <!-- Back: Register -->
+    <div class="auth-face back">
+      <h2>Register</h2>
+      <form (ngSubmit)="register()" class="form">
+        <div class="form-group">
+          <label for="registerName">Name</label>
+          <input 
+            id="registerName"
+            type="text" 
+            [(ngModel)]="registerName" 
+            name="registerName" 
+            placeholder="Enter your name" 
+            required 
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input 
+            id="registerEmail"
+            type="email" 
+            [(ngModel)]="registerEmail" 
+            name="registerEmail" 
+            placeholder="Enter your email" 
+            required 
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="registerPassword">Password</label>
+          <input 
+            id="registerPassword"
+            type="password" 
+            [(ngModel)]="registerPassword" 
+            name="registerPassword" 
+            placeholder="Create a password" 
+            required 
+          />
+        </div>
+
+        <button type="submit" class="btn">Register</button>
+      </form>
+      <p class="switch">
+        Already registered? <a (click)="flipCard()">Login</a>
+      </p>
+    </div>
+
+  </div>
+</div>

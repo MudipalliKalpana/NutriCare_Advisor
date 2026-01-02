@@ -1,0 +1,43 @@
+<h2 class="page-title">Select Your Health Conditions</h2>
+<div *ngIf="diseases.length === 0" class="disease-grid">
+  <div class="skeleton" style="height: 90px"></div>
+  <div class="skeleton" style="height: 90px"></div>
+  <div class="skeleton" style="height: 90px"></div>
+</div>
+
+<p class="page-subtitle">
+  Choose one or more conditions to receive personalized food recommendations.
+</p>
+
+<!-- SEARCH BAR -->
+<div class="search-bar">
+  <input type="text" placeholder="Search diseases..." [(ngModel)]="keyword" (keyup.enter)="loadDiseases()" />
+  <button (click)="loadDiseases()">Search</button>
+</div>
+
+<!-- DISEASE LIST -->
+<div class="disease-grid">
+  <div class="disease-card" *ngFor="let d of diseases" [class.selected]="selectedDiseaseIds.includes(d.diseaseId)"
+    (click)="toggleSelection(d.diseaseId)">
+    <h4>{{ d.diseaseName }}</h4>
+    <p>{{ d.description }}</p>
+  </div>
+</div>
+
+<!-- PAGINATION -->
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="page === 0">
+    ← Previous
+  </button>
+
+  <span>Page {{ page + 1 }} of {{ totalPages }}</span>
+
+  <button (click)="nextPage()" [disabled]="page === totalPages - 1">
+    Next →
+  </button>
+</div>
+
+<!-- CTA -->
+<button class="primary-btn" (click)="getRecommendations()" [disabled]="selectedDiseaseIds.length === 0">
+  Get Food Recommendations
+</button>

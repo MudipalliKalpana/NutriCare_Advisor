@@ -1,0 +1,37 @@
+<h2 class="page-title">Admin Audit Logs</h2>
+
+<div *ngIf="loading" class="loading">
+  Loading audit logs...
+</div>
+
+<table *ngIf="!loading" class="audit-table">
+  <thead>
+    <tr>
+      <th>Admin</th>
+      <th>Action</th>
+      <th>Entity</th>
+      <th>ID</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let log of logs">
+      <td>{{ log.adminEmail }}</td>
+
+      <td>
+        <span class="badge" [ngClass]="log.action.toLowerCase()">
+          {{ log.action }}
+        </span>
+      </td>
+
+      <td>{{ log.entityType }}</td>
+      <td>{{ log.entityId }}</td>
+      <td>{{ log.timestamp | date:'short' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && logs.length === 0" class="empty">
+  No audit logs found.
+</div>

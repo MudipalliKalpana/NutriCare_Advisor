@@ -1,9 +1,53 @@
-.primary-btn {
-  background-color: #2C7BE5;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 720px;
+  margin: 60px auto;
+  background: var(--card-bg);
+  padding: 48px 42px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== TITLE ===== */
+.container h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+/* ===== TEXT ===== */
+.container p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.subtitle {
   font-size: 16px;
+  font-weight: 500;
+}
+
+/* ===== BUTTON ===== */
+.primary-btn {
+  margin-top: 30px;
+  padding: 14px 38px;
+  border-radius: 30px;
+  border: none;
   cursor: pointer;
+
+  background: var(--primary-green);
+  color: var(--text-light);
+  font-size: 16px;
+  font-weight: 600;
+
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.primary-btn:hover {
+  background: var(--primary-green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }

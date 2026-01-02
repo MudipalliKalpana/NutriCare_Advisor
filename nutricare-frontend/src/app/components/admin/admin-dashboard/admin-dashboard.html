@@ -1,17 +1,19 @@
 <nav class="admin-navbar">
-  <div class="nav-left">
-    <span class="logo" (click)="goHome()">NutriCare Advisor</span>
+  <div class="logo" (click)="goHome()">
+    🥗 NutriCare <span>Admin</span>
   </div>
 
-  <div class="nav-center">
-    <a routerLink="/admin/foods" routerLinkActive="active">Manage Foods</a>
-    <a routerLink="/admin/diseases" routerLinkActive="active">Manage Diseases</a>
-    <a routerLink="/admin/rules" routerLinkActive="active">Manage Rules</a>
+  <div class="nav-links">
+    <a routerLink="/admin/audit-logs">Audit Logs</a>
+    <a routerLink="/admin/diseases" routerLinkActive="active">Diseases</a>
+    <a routerLink="/admin/foods" routerLinkActive="active">Foods</a>
+    <a routerLink="/admin/rules" routerLinkActive="active">Rules</a>
   </div>
 
-  <div class="nav-right">
-    <button class="logout-btn" (click)="logout()">Logout</button>
-  </div>
+  <button class="logout-btn" (click)="logout()">Logout</button>
 </nav>
 
-<router-outlet></router-outlet>
+<!-- ADMIN PAGES LOAD HERE -->
+<div class="admin-content">
+  <router-outlet></router-outlet>
+</div>

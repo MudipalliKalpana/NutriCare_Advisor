@@ -17,8 +17,11 @@ export class DiseaseSearchComponent implements OnInit {
   diseases: any[] = [];
   selectedDiseaseIds: number[] = [];
 
-  keyword = '';
+  keyword: string = '';   // ✅ REQUIRED
+
   page = 0;
+  size = 6;
+  totalPages = 0;
 
   constructor(
     private diseaseService: DiseaseService,
@@ -30,11 +33,31 @@ export class DiseaseSearchComponent implements OnInit {
     this.loadDiseases();
   }
 
-  loadDiseases() {
-    this.diseaseService.searchDiseases(this.keyword, this.page)
-      .subscribe(res => {
-        this.diseases = res.content;
-      });
+  loadDiseases(reset: boolean = false) {
+  if (reset) {
+    this.page = 0;
+  }
+
+  this.diseaseService
+    .searchDiseases(this.keyword, this.page, this.size)
+    .subscribe(res => {
+      this.diseases = res.content;
+      this.totalPages = res.totalPages;
+    });
+}
+
+  nextPage() {
+    if (this.page < this.totalPages - 1) {
+      this.page++;
+      this.loadDiseases();
+    }
+  }
+
+  prevPage() {
+    if (this.page > 0) {
+      this.page--;
+      this.loadDiseases();
+    }
   }
 
   toggleSelection(diseaseId: number) {

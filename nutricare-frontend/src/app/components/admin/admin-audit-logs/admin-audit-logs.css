@@ -1,0 +1,56 @@
+.page-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.loading,
+.empty {
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
+}
+
+.audit-table {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  border-collapse: collapse;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+.audit-table th {
+  background: #237f1d;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.audit-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Badges */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: white;
+}
+
+.badge.add {
+  background: #22c55e;
+}
+
+.badge.update {
+  background: #3b82f6;
+}
+
+.badge.delete {
+  background: #ef4444;
+}
+
+span{
+    background-color: #082139;
+    color: antiquewhite;
+}

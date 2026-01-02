@@ -1,38 +1,44 @@
-<h2 class="title">Food Recommendations</h2>
+<h2 class="user-title">Food Recommendations</h2>
 
-<div *ngIf="recommendations.length === 0" class="empty">
-  No recommendations yet
+<!-- Selected Diseases -->
+<div class="selected-diseases">
+  <span *ngFor="let d of selectedDiseases">
+    {{ d.diseaseName }}
+  </span>
 </div>
 
-<div class="cards">
-  <div class="card" *ngFor="let r of recommendations"
-       [class.limit]="r.impact === 'LIMIT'">
+<!-- Empty State -->
+<div *ngIf="recommendations.length === 0" class="empty">
+  No recommendations available.
+</div>
 
+<!-- Recommendation Cards -->
+<div class="card-grid">
+  <div
+    class="food-card"
+    *ngFor="let r of recommendations"
+    [ngClass]="r.impact.toLowerCase()"
+  >
     <div class="card-header">
-      <span class="food">{{ r.foodName }}</span>
+      <h3>{{ r.foodName }}</h3>
 
-      <span class="badge"
-        [ngClass]="{
-          allowed: r.impact === 'ALLOWED',
-          limit: r.impact === 'LIMIT',
-          avoid: r.impact === 'AVOID',
-          safe: r.impact === 'SAFE'
-        }">
+      <span class="impact-badge {{ r.impact.toLowerCase() }}">
         {{ r.impact }}
-      </span>
-
-      <span *ngIf="r.autoLimited" class="auto-badge">
-        Auto-limited
       </span>
     </div>
 
-    <p class="explanation">
-      {{ r.explanation }}
-    </p>
+    <p
+  class="explanation"
+  [innerHTML]="formatExplanation(r.explanation)"
+></p>
 
+
+    <div *ngIf="r.autoLimited" class="auto-warning">
+      ⚠ Auto-limited due to food category risk
+    </div>
   </div>
-  <button class="back-btn" (click)="goBack()">
+</div>
+
+<button class="back-btn" (click)="goBack()">
   ← Modify Disease Selection
 </button>
-
-</div>

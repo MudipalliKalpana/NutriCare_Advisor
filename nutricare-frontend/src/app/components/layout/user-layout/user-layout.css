@@ -1,0 +1,49 @@
+/* ===== NAVBAR ===== */
+.navbar {
+  height: 64px;
+  background: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.brand {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+.brand span {
+  color: var(--primary-green);
+}
+
+.navbar button {
+  background: var(--primary-green);
+  color: var(--text-light);
+  border: none;
+  padding: 8px 22px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.navbar button:hover {
+  background: var(--primary-green-dark);
+}
+
+/* ===== PAGE WRAPPER ===== */
+.page {
+  min-height: calc(100vh - 64px);
+  background: var(--page-bg);
+  padding: 2px 20px;
+}

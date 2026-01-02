@@ -1,0 +1,51 @@
+.page-title {
+  margin-bottom: 16px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.toolbar input {
+  width: 250px;
+  padding: 6px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid #e5e7eb;
+  padding: 8px;
+}
+
+.admin-table th {
+  background: #f1f5f9;
+}
+
+.actions button {
+  margin-right: 6px;
+}
+
+.danger {
+  background: #ef4444;
+  color: white;
+}
+
+.active {
+  color: green;
+  font-weight: bold;
+}
+
+.inactive {
+  color: gray;
+}
+
+.pagination {
+  margin-top: 12px;
+}
